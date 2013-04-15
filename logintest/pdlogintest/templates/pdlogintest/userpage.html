@@ -2,10 +2,130 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+@import url(http://fonts.googleapis.com/css?family=Lato:100,200,300);
+
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+body{
+	height: 600px;
+	width: 100%;
+	background-color:#00519d;
+}
+
+#headercontainer{
+	height: 20%;
+	width: 100%;
+	position: relative;
+	top: 0%;
+	text-align: center;
+	
+	margin-top: 30px;
+	margin-bottom: 70px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid;
+	border-color: white;
+}
+
+#headercontainer span{
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	font-size: 6em;
+	color: white;
+}
+
+#usercontainer{
+	height: 60%;
+	width: 100%;
+}
+
+#userinfo{
+	height: 100%;
+	width: 75%;
+	position: relative;
+	left: 15%;	
+	
+	font-family: 'Lato', sans-serif;
+	color: white;
+}
+
+#usernametext{
+	font-size: 2.2em;
+	font-weight: 100;
+}
+
+#userdatetext{
+	font-size: .75em;
+	font-weight: 100;
+	margin-left: 0px;
+	opacity: 0;
+	
+	-webkit-transition: opacity linear .2s, margin-left linear .2s;
+	-moz-transition: opacity linear .2s, margin-left linear .2s;
+}
+
+#usernametext:hover + #userdatetext{
+	opacity: 1;
+	margin-left: 20px;
+	color: white;
+}
+
+#descriptiontext{
+	font-size: 1em;
+	font-weight: 100;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+#footercontainer{
+	height: 20%;
+	width: 100%;
+	position: relative;
+	bottom: 0%;
+	text-align: center;
+	
+	border-top: 1px solid;
+	border-color: white;
+	padding-top: 10px;
+}
+
+#footercontainer span{
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	color: white;
+
+}
+
+::selection {
+	background: #FF4444; /* Safari */
+}
+
+::-webkit-selection{
+	background: #FF4444; /* Chrome */
+}
+
+::-moz-selection {
+	background: #FF4444; /* Firefox */
+}
+
+</style>
 </head>
 <body>
-	<p>Username: {{ userObj.username }}</p>
-	<p>Description: {{ userObj.description }}</p>
+<div id='headercontainer'><span>Profile</span></div>
+<div id='usercontainer'>
+<div id='userinfo'>
+<span id='usernametext'>Hi {{ userObj.username }}!</span><span id='userdatetext'>Created On: {{ userObj.birthday }}</span>
+<p id='descriptiontext'>{{ userObj.description }}</p>
+</div>
+</div>
 </body>
+<footer>
+<div id='footercontainer'>
+<span id='footertext'>Sid 2013</span>
+</div>
+</footer>
 </html>
 
