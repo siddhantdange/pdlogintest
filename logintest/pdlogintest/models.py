@@ -4,8 +4,7 @@ from django.db import models
 
 class User(models.Model):
 	username = models.CharField(max_length=15)
-	birthday = models.DateTimeField()
-	user_id = models.IntegerField()
+	birthday = models.CharField(max_length=8)
 	description = models.CharField(max_length=200)
 	
 	def __unicode__(self):

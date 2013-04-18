@@ -1,14 +1,156 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <style>
+@import url(http://fonts.googleapis.com/css?family=Lato:100,200,300);
+
+*{
+padding: 0px;
+margin: 0px;
+}
+
+body{
+height: 1000px;
+width: 100%;
+background-color: #00519d;
+}
+
+#headercontainer{
+	height: 15%;
+	width: 100%;
+	border-bottom: 1px solid white;
+	
+	text-align: center;
+}
+
+#headercontainer > span{
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	font-size: 6em;
+	color: white;
+}
+
+#formcontainer{
+	height: 65%;
+	width: 100%;
+	overflow: auto;
+}
+
+#formcontainer > span{
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	font-size: 2em;
+	color: #FF4444; 
+	text-align: center;
+	position: relative;
+	top: 2%;
+}
+
+form{
+	height: 100%;
+	width: 40%;
+	float: left;
+}
+
+input{
+	display: table-cell;
+	vertical-align: middle;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 2em;
+	position: relative;
+	top: 10%;
+	left: 30%;
+	
+	border: 2px solid black;
+	border-radius: 20px;
+	
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	font-size: 2em;
+	color: black;
+	text-align: center;
+	
+	-webkit-transition: background-color linear 0.2s;
+	-moz-transition: background-color linear 0.2s;
+}
+
+input::-webkit-input-placeholder{
+text-align: center;
+}
+
+input:focus{
+	background-color: #E0FFFF;
+}
+
+#descriptioninput{
+	height: 5em;
+}
+
+#submitbutton{
+	background-color: white;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+#submitbutton:hover{
+	background-color: #E0FFFF;
+}
+
+#footercontainer{
+	height: 10%;
+	width: 100%;
+	position: relative;
+	bottom: 0%;
+	clear: both;
+	
+	text-align: center;
+	border-top: 1px solid white;
+	padding-top: 5px;
+}
+
+#footercontainer > span{
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	font-size: 1em;
+	color: white;
+}
+
+::selection {
+background: #FF4444; /* Safari */
+}
+
+::-webkit-selection{
+background: #FF4444; /* Chrome */
+}
+
+::-moz-selection {
+background: #FF4444; /* Firefox */
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
 </style>
 </head>
-<body>
-{% for user in userList %}
-	<p>{{ user.username }}</p>
-{% endfor %}
-</body>
+	<body>
+		<div id='headercontainer'><span>EnterForm!</span></div>
+		<div id='formcontainer'>
+			<span id='warningtext'>{% if error_message != '' %}{{error_message}} {% else %} Post Your Info! {% endif %}</span>
+			<form action="{% url 'submitprofile' %}" method="post">
+			{% csrf_token %}
+				<input id='usernameinput' placeholder='username' type='text' name='usernameinput' />
+				<input id='birthdayinput' placeholder='birthday: mm/dd/yy' type='text' type='text' name='birthdayinput' />
+				<input id='descriptioninput' placeholder='description' type='textarea' name='descriptioninput' />
+				<input id='submitbutton' type='submit' value='Submit!' />
+			</form>
+		</div>
+	</body>
+	<footer>
+		<div id='footercontainer'><span>Sid 2013</span></div>
+	</footer>
 </html>
 
